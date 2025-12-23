@@ -105,7 +105,6 @@ composer.lock
 
 # ========== NODE (if added later) ==========
 node_modules/
-package-lock.json
 yarn.lock
 
 # ========== CACHE ==========

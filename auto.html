@@ -723,7 +723,7 @@ Quote Request Form
 							<span class="sub-title">Service Request</span>
 							<h2 class="sec-title">Schedule An Appointment</h2>
 						</div>
-						<form action="send_email.php" method="post">
+						<form action="/api/contact" method="post">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -1082,13 +1082,16 @@ Footer Area
 		<!-- Single form handler -->
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
-				var form = document.querySelector("form");
+				var form = document.querySelector("#contact form");
 				if (form) {
 					form.addEventListener("submit", function (event) {
 						event.preventDefault();
-						fetch("send_email.php", {
+						fetch(form.getAttribute("action") || "/api/contact", {
 							method: "POST",
-							body: new FormData(this),
+							headers: {
+								"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+							},
+							body: new URLSearchParams(new FormData(this)).toString(),
 						})
 							.then(function (response) {
 								if (response.ok) {
