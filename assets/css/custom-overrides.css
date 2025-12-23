@@ -1,0 +1,619 @@
+/**
+ * Prime Auto Solutions - Custom Overrides
+ * ========================================
+ * This file contains all custom styling overrides for the facelift.
+ * Following the "enhancement-only" philosophy - vendor files remain untouched.
+ *
+ * Last Updated: December 2024
+ */
+
+/* ==========================================================================
+   CSS Custom Properties (Theme Overrides)
+   ========================================================================== */
+:root {
+    /* Primary brand colors - keeping the red theme */
+    --prime-red: #c41010;
+    --prime-red-dark: #a00d0d;
+    --prime-red-light: #e83030;
+
+    /* Enhanced neutral palette */
+    --prime-dark: #1a1a1a;
+    --prime-gray: #4a4a4a;
+    --prime-light: #f8f9fa;
+
+    /* Improved shadows for depth */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+
+    /* Smooth transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+}
+
+/* ==========================================================================
+   Typography Enhancements
+   ========================================================================== */
+
+/* Improve heading legibility */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sec-title,
+.hero-title {
+    letter-spacing: -0.02em;
+}
+
+/* Hero title improvements */
+.hero-title {
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+/* Better paragraph spacing */
+p {
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   Header & Navigation Enhancements
+   ========================================================================== */
+
+/* Sticky header enhancement */
+.th-header {
+    transition: all var(--transition-base);
+}
+
+.th-header.sticky-header {
+    box-shadow: var(--shadow-md);
+}
+
+/* Navigation hover effects */
+.main-menu ul li a {
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.main-menu ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--prime-red);
+    transition: width var(--transition-base);
+}
+
+.main-menu ul li a:hover::after,
+.main-menu ul li.active a::after {
+    width: 100%;
+}
+
+/* Icon buttons hover enhancement */
+.icon-btn {
+    transition: all var(--transition-fast);
+}
+
+.icon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   Hero Section Enhancements
+   ========================================================================== */
+
+.th-hero-wrapper {
+    position: relative;
+}
+
+/* Better text shadow for readability */
+.hero-style4 .hero-title {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-style4 .hero-text {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.25rem;
+}
+
+/* ==========================================================================
+   Button Enhancements
+   ========================================================================== */
+
+.th-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.th-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.th-btn:hover::before {
+    left: 100%;
+}
+
+.th-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.th-btn:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Card & Box Enhancements
+   ========================================================================== */
+
+/* Service cards */
+.service-tab {
+    transition: all var(--transition-base);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.service-tab:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Process boxes */
+.process-box {
+    transition: all var(--transition-base);
+}
+
+.process-box:hover {
+    transform: translateY(-8px);
+}
+
+.process-box_icon {
+    transition: all var(--transition-base);
+}
+
+.process-box:hover .process-box_icon {
+    transform: scale(1.05);
+}
+
+/* Testimonial cards */
+.testi-block {
+    transition: all var(--transition-base);
+    border-radius: 12px;
+}
+
+.testi-block:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Feature media boxes */
+.feature-media {
+    transition: all var(--transition-base);
+}
+
+.feature-media:hover {
+    transform: translateX(8px);
+}
+
+/* ==========================================================================
+   Form Enhancements
+   ========================================================================== */
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--prime-dark);
+}
+
+.form-control {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: all var(--transition-fast);
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: var(--prime-red);
+    box-shadow: 0 0 0 3px rgba(196, 16, 16, 0.1);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #999;
+}
+
+/* Select dropdown styling */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a4a4a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+/* Textarea specific */
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ==========================================================================
+   Footer Enhancements
+   ========================================================================== */
+
+.footer-wrapper {
+    position: relative;
+}
+
+/* Auto/Collision footer (layout4): center the logo + about copy */
+.footer-layout4 .logo-and-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-layout4 .th-widget-about {
+    margin-right: 0;
+    text-align: center;
+}
+
+.footer-layout4 .th-widget-about .about-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-layout4 .footer-text {
+    text-align: center;
+}
+
+.footer-logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.footer-text {
+    line-height: 1.7;
+}
+
+.footer-info-title {
+    color: var(--prime-red);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* Social icons */
+.th-social a {
+    transition: all var(--transition-fast);
+}
+
+.th-social a:hover {
+    transform: translateY(-3px);
+}
+
+/* Map container */
+.map-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    filter: grayscale(20%);
+    transition: filter var(--transition-base);
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0%);
+}
+
+/* ==========================================================================
+   Mobile Call Button Enhancement
+   ========================================================================== */
+
+.phone-call {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 999;
+}
+
+.phone-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--prime-red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: var(--shadow-lg);
+    animation: phone-pulse 2s infinite;
+    transition: all var(--transition-fast);
+}
+
+.phone-btn:hover {
+    background: var(--prime-red-dark);
+    color: white;
+    transform: scale(1.1);
+}
+
+@keyframes phone-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(196, 16, 16, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(196, 16, 16, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(196, 16, 16, 0);
+    }
+}
+
+/* ==========================================================================
+   Scroll Progress Indicator
+   ========================================================================== */
+
+/* Remove hover transform - conflicts with show/hide translateY behavior in style.css */
+.scroll-top {
+    /* Don't override transition - causes flickering with scroll events */
+    will-change: transform;
+}
+
+.scroll-top:hover .progress-circle {
+    /* Subtle visual feedback without transform conflict */
+    filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   Dual Service Branding - Prime Auto Solutions & Prime Collision Center
+   ========================================================================== */
+
+/* Service badge styling */
+.service-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.service-badge.mechanical {
+    background-color: var(--prime-red);
+    color: white;
+}
+
+.service-badge.collision {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* Dual service cards */
+.dual-service-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    height: 100%;
+}
+
+.dual-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.dual-service-card.mechanical {
+    border-top: 4px solid var(--prime-red);
+}
+
+.dual-service-card.collision {
+    border-top: 4px solid #2563eb;
+}
+
+/* ==========================================================================
+   Accessibility Improvements
+   ========================================================================== */
+
+/* Focus visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--prime-red);
+    outline-offset: 2px;
+}
+
+/* Skip to main content link (for accessibility) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--prime-red);
+    color: white;
+    padding: 8px 16px;
+    z-index: 10000;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================================================
+   Mobile Responsive Enhancements
+   ========================================================================== */
+
+@media (max-width: 991px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .phone-call {
+        bottom: 80px;
+        right: 15px;
+    }
+
+    .phone-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .sec-title {
+        font-size: 1.75rem;
+    }
+
+    .form-control {
+        padding: 10px 14px;
+    }
+
+    .dual-service-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .process-box {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .th-header,
+    .phone-call,
+    .scroll-top,
+    .preloader {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* ==========================================================================
+   Collision Services Card Styles
+   ========================================================================== */
+
+.service-list-simple {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+}
+
+.service-list-simple li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.service-list-simple li i {
+    flex-shrink: 0;
+}
+
+.service-card-title {
+    color: var(--prime-dark);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.service-card-text {
+    color: var(--prime-gray);
+    margin-bottom: 0;
+}
+
+/* Tab buttons for about section */
+.tab-menu4 {
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tab-menu4 .th-btn {
+    background: transparent;
+    border: 2px solid var(--prime-red);
+    color: var(--prime-red);
+}
+
+.tab-menu4 .th-btn.active,
+.tab-menu4 .th-btn:hover {
+    background: var(--prime-red);
+    color: white;
+}
+
+/* Collision center blue accent for secondary brand */
+.dual-service-card.collision .service-card-icon i {
+    color: #2563eb !important;
+}
+
+/* Service option groups in select */
+select.form-control optgroup {
+    font-weight: 700;
+    color: var(--prime-dark);
+}
+
+/* Better contrast for text success */
+.text-success {
+    color: #059669 !important;
+}

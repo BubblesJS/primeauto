@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html dir="ltr" class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>Prime Automotive | Mechanical Repair & Collision Center in Robinson, IL</title>
+		<meta name="description" content="Prime Auto Solutions LLC for mechanical repair and Prime Collision Center LLC for collision and body work. Two specialized automotive businesses, one trusted owner in Robinson, IL." />
+		<meta name="keywords" content="auto repair Robinson IL, collision repair Crawford County, body shop Illinois, car mechanic Robinson, Prime Auto Solutions, Prime Collision Center" />
+		<meta name="robots" content="INDEX,FOLLOW" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="msapplication-TileColor" content="#0a0a0a" />
+		<meta property="og:image" content="prime5.png" />
+		<meta name="twitter:image" content="prime5.png" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="theme-color" content="#0a0a0a" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+		<link rel="stylesheet" href="assets/css/style.css" />
+		<!-- Structured Data for SEO -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Prime Automotive",
+				"description": "Two specialized automotive businesses, one trusted owner. Prime Auto Solutions LLC for mechanical repair and Prime Collision Center LLC for collision and body work in Robinson, IL.",
+				"url": "https://primeautorepaircenter.com",
+				"logo": "https://primeautorepaircenter.com/assets/img/prime5.png",
+				"telephone": "+1-618-454-4075",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "12469 E 1050th Ave",
+					"addressLocality": "Robinson",
+					"addressRegion": "IL",
+					"postalCode": "62454",
+					"addressCountry": "US"
+				},
+				"sameAs": ["https://m.facebook.com/61566338969422"],
+				"subOrganization": [
+					{
+						"@type": "AutoRepair",
+						"name": "Prime Auto Solutions LLC",
+						"url": "https://primeautorepaircenter.com/auto.html"
+					},
+					{
+						"@type": "AutoBodyShop",
+						"name": "Prime Collision Center LLC",
+						"url": "https://primeautorepaircenter.com/collision.html"
+					}
+				]
+			}
+		</script>
+		<style>
+			:root {
+				--red: #c41010;
+				--red-dark: #8b0000;
+				--blue: #2563eb;
+				--blue-dark: #1e40af;
+				--black: #0a0a0a;
+				--white: #ffffff;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+				font-family: "Plus Jakarta Sans", sans-serif;
+				background: var(--black);
+			}
+
+			/* ========== PAGE TRANSITION OVERLAY ========== */
+			.page-transition {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: var(--black);
+				z-index: 10000;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+			.page-transition.active {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			/* ========== SPLIT SCREEN CONTAINER ========== */
+			.split-container {
+				position: relative;
+				width: 100%;
+				height: 100vh;
+				display: flex;
+				overflow: hidden;
+			}
+
+			/* ========== PANELS ========== */
+			.panel {
+				position: relative;
+				width: 50%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-decoration: none;
+				overflow: hidden;
+				cursor: pointer;
+				z-index: 10; /* Ensure panels are above other elements */
+			}
+
+			.panel::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				/* No background - handled by .panel-bg */
+				z-index: 0;
+			}
+
+			.panel::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				transition: opacity 0.6s ease;
+			}
+
+			/* Left Panel - Mechanical (Red) */
+			/* Background handled by .panel-bg only */
+
+			.panel-left::after {
+				background: linear-gradient(135deg, rgba(196, 16, 16, 0.15) 0%, transparent 100%);
+			}
+
+			/* Panel background element (for GSAP blur) */
+			.panel-bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+			}
+
+			.panel-left .panel-bg {
+				background: linear-gradient(135deg, #1a0505 0%, #0a0a0a 100%);
+			}
+
+			.panel-right .panel-bg {
+				background: linear-gradient(225deg, #050a1a 0%, #0a0a0a 100%);
+			}
+
+			/* Right Panel - Collision (Blue) */
+			/* Background handled by .panel-bg only */
+
+			.panel-right::after {
+				background: linear-gradient(225deg, rgba(37, 99, 235, 0.15) 0%, transparent 100%);
+			}
+
+			/* Diagonal Slice with noise texture */
+			.diagonal-slice {
+				position: absolute;
+				top: 0;
+				left: 50%;
+				width: 4px;
+				height: 100%;
+				background: linear-gradient(180deg, var(--red) 0%, var(--blue) 100%);
+				transform: skewX(-5deg);
+				z-index: 100;
+				box-shadow: 0 0 30px rgba(196, 16, 16, 0.5), 0 0 30px rgba(37, 99, 235, 0.5);
+				pointer-events: none; /* Don't block panel hover */
+				/* GSAP handles position animation */
+			}
+			.diagonal-slice::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -20px;
+				width: 44px;
+				height: 100%;
+				background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+				opacity: 0.03;
+				pointer-events: none;
+			}
+
+			/* ========== HOVER STATES (Desktop only - GSAP controlled) ========== */
+			@media (min-width: 769px) {
+				.panel:hover::before {
+					transform: scale(1.05);
+				}
+
+				.panel-left:hover::after {
+					opacity: 1;
+					background: linear-gradient(135deg, rgba(196, 16, 16, 0.25) 0%, transparent 100%);
+				}
+
+				.panel-right:hover::after {
+					opacity: 1;
+					background: linear-gradient(225deg, rgba(37, 99, 235, 0.25) 0%, transparent 100%);
+				}
+			}
+
+			/* ========== PANEL CONTENT ========== */
+			.panel-content {
+				position: relative;
+				z-index: 10;
+				text-align: center;
+				padding: 2rem;
+				opacity: 0;
+				transform: translateY(30px);
+			}
+
+			.panel-icon {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 auto 2rem;
+				font-size: 2.5rem;
+				color: var(--white);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.panel-left .panel-icon {
+				background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+				box-shadow: 0 10px 40px rgba(196, 16, 16, 0.4);
+			}
+
+			.panel-right .panel-icon {
+				background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+				box-shadow: 0 10px 40px rgba(37, 99, 235, 0.4);
+			}
+
+			.panel-icon::before {
+				content: "";
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				width: 200%;
+				height: 200%;
+				background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
+				transform: translateX(-100%);
+				transition: transform 0.6s ease;
+			}
+
+			.panel-icon {
+				transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.4s ease;
+			}
+
+			/* Icon fades OUT on hover - text becomes hero */
+			.panel:hover .panel-icon {
+				transform: translateY(-10px) scale(0.9);
+				opacity: 0.6;
+			}
+
+			.panel:hover .panel-icon::before {
+				transform: translateX(100%);
+			}
+
+			.panel-llc {
+				font-size: 0.9rem;
+				letter-spacing: 4px;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.4);
+				margin-bottom: 0.5rem;
+			}
+
+			.panel-title {
+				font-size: clamp(1.5rem, 4vw, 2.5rem);
+				font-weight: 800;
+				color: var(--white);
+				margin-bottom: 1rem;
+				line-height: 1.1;
+			}
+
+			.panel-left .panel-title {
+				text-shadow: 0 0 40px rgba(196, 16, 16, 0.5);
+			}
+
+			.panel-right .panel-title {
+				text-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
+			}
+
+			.panel-subtitle {
+				font-size: 0.95rem;
+				color: rgba(255, 255, 255, 0.6);
+				margin-bottom: 2rem;
+				max-width: 280px;
+				line-height: 1.6;
+			}
+
+			.panel-cta {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.75rem;
+				padding: 1rem 2rem;
+				border-radius: 50px;
+				font-weight: 600;
+				font-size: 0.9rem;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				color: var(--white);
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.panel-left .panel-cta {
+				background: transparent;
+				border: 2px solid var(--red);
+			}
+
+			.panel-left:hover .panel-cta {
+				background: var(--red);
+				box-shadow: 0 10px 30px rgba(196, 16, 16, 0.4);
+			}
+
+			.panel-right .panel-cta {
+				background: transparent;
+				border: 2px solid var(--blue);
+			}
+
+			.panel-right:hover .panel-cta {
+				background: var(--blue);
+				box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+			}
+
+			.panel-cta i {
+				transition: transform 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+			}
+
+			.panel:hover .panel-cta i {
+				transform: translateX(8px);
+			}
+
+			/* Directional cursor hint near split */
+			.panel-left {
+				cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23C41010' stroke-width='2'%3E%3Cpath d='M19 12H5M12 5l-7 7 7 7'/%3E%3C/svg%3E") 16 16, pointer;
+			}
+
+			.panel-right {
+				cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E") 16 16, pointer;
+			}
+
+			/* ========== CENTER LOGO ========== */
+			.center-brand {
+				position: absolute;
+				top: 2rem;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 200;
+				text-align: center;
+				opacity: 0;
+				pointer-events: none; /* Don't block hover on panels */
+			}
+
+			.center-logo {
+				width: 250px;
+				margin-bottom: 0.5rem;
+			}
+
+			.center-tagline {
+				font-size: 0.7rem;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+			/* ========== FOOTER ========== */
+			.hub-footer {
+				position: absolute;
+				bottom: 2rem;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 200;
+				text-align: center;
+				opacity: 0;
+				pointer-events: none; /* Don't block hover on panels */
+			}
+
+			.hub-footer a {
+				pointer-events: all; /* But phone link should be clickable */
+			}
+
+			.hub-phone {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: var(--white);
+				font-size: 1.1rem;
+				font-weight: 600;
+				margin-bottom: 0.25rem;
+			}
+
+			.hub-phone a {
+				color: var(--white);
+				text-decoration: none;
+				transition: opacity 0.3s ease;
+			}
+
+			.hub-phone a:hover {
+				opacity: 0.8;
+			}
+
+			.hub-phone i {
+				background: linear-gradient(135deg, var(--red), var(--blue));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.hub-location {
+				font-size: 0.8rem;
+				color: rgba(255, 255, 255, 0.4);
+			}
+
+			/* ========== DECORATIVE ELEMENTS ========== */
+			.corner-accent {
+				position: absolute;
+				width: 150px;
+				height: 150px;
+				z-index: 50;
+				opacity: 0;
+				pointer-events: none; /* Don't block panel hover */
+			}
+
+			.corner-accent.top-left {
+				top: 0;
+				left: 0;
+				border-top: 1px solid rgba(196, 16, 16, 0.3);
+				border-left: 1px solid rgba(196, 16, 16, 0.3);
+			}
+
+			.corner-accent.bottom-right {
+				bottom: 0;
+				right: 0;
+				border-bottom: 1px solid rgba(37, 99, 235, 0.3);
+				border-right: 1px solid rgba(37, 99, 235, 0.3);
+			}
+
+			/* ========== MOBILE ========== */
+			@media (max-width: 768px) {
+				.split-container {
+					flex-direction: column;
+				}
+
+				.panel {
+					width: 100% !important;
+					height: 50% !important;
+					filter: none !important;
+					cursor: pointer;
+				}
+
+				/* Horizontal slice in the middle */
+				.diagonal-slice {
+					top: 50%;
+					left: 0 !important;
+					width: 100%;
+					height: 3px;
+					transform: translateY(-50%) skewY(-1deg);
+				}
+
+				/* No hover expansion on mobile - tap goes directly */
+				.panel-icon {
+					width: 60px;
+					height: 60px;
+					font-size: 1.5rem;
+					margin-bottom: 0.75rem;
+					opacity: 0.7;
+				}
+
+				/* Tap feedback - handled by .panel-tapped class */
+				.panel.panel-tapped {
+					background: rgba(255, 255, 255, 0.05);
+				}
+
+				.panel.panel-tapped .panel-icon {
+					transform: scale(0.95);
+				}
+
+				.panel.panel-tapped .panel-cta {
+					transform: scale(0.97);
+				}
+
+				.panel-llc {
+					font-size: 0.65rem;
+					letter-spacing: 2px;
+				}
+
+				.panel-title {
+					font-size: 1.35rem;
+					margin-bottom: 0.5rem;
+				}
+
+				.panel-subtitle {
+					font-size: 0.8rem;
+					margin-bottom: 0.75rem;
+					max-width: 240px;
+				}
+
+				.panel-content {
+					padding: 1rem;
+				}
+
+				.panel-cta {
+					padding: 0.65rem 1.25rem;
+					font-size: 0.75rem;
+				}
+
+				.center-brand {
+					top: 0.75rem;
+				}
+
+				.center-logo {
+					width: 70px;
+					margin-bottom: 0.25rem;
+				}
+
+				.center-tagline {
+					font-size: 0.6rem;
+					letter-spacing: 1px;
+				}
+
+				.hub-footer {
+					bottom: 0.5rem;
+				}
+
+				.hub-phone {
+					font-size: 0.95rem;
+				}
+
+				.hub-location {
+					font-size: 0.7rem;
+				}
+
+				.corner-accent {
+					display: none;
+				}
+
+				/* Directional cursors don't work on mobile */
+				.panel-left,
+				.panel-right {
+					cursor: pointer;
+				}
+			}
+
+			/* Extra small screens */
+			@media (max-width: 400px) {
+				.panel-title {
+					font-size: 1.15rem;
+				}
+
+				.panel-subtitle {
+					font-size: 0.75rem;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+				}
+
+				.panel-icon {
+					width: 50px;
+					height: 50px;
+					font-size: 1.25rem;
+					margin-bottom: 0.5rem;
+				}
+			}
+
+			/* ========== REDUCED MOTION ========== */
+			@media (prefers-reduced-motion: reduce) {
+				*,
+				*::before,
+				*::after {
+					animation-duration: 0.01ms !important;
+					transition-duration: 0.01ms !important;
+				}
+			}
+		</style>
+		<!-- Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8922PNCE4"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-S8922PNCE4");
+		</script>
+	</head>
+	<body>
+		<!-- Page Transition Overlay -->
+		<div class="page-transition" id="pageTransition"></div>
+
+		<!-- Speedometer Preloader -->
+		<div class="preloader">
+			<div class="preloader-inner">
+				<div class="loader">
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="subline"></div>
+					<div class="subline"></div>
+					<div class="subline"></div>
+					<div class="subline"></div>
+					<div class="subline"></div>
+					<div class="loader-circle-1">
+						<div class="loader-circle-2"></div>
+					</div>
+					<div class="needle"></div>
+					<div class="loading">Loading</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main Split Screen -->
+		<div class="split-container" id="splitContainer">
+			<!-- Center Brand -->
+			<div class="center-brand" id="centerBrand">
+				<img src="assets/img/prime5.png" alt="Prime Automotive" class="center-logo" />
+				<p class="center-tagline">Separate Shops · Same Standard</p>
+			</div>
+
+			<!-- Left Panel - Mechanical -->
+			<a href="auto.html" class="panel panel-left" id="panelLeft">
+				<div class="panel-bg"></div>
+				<div class="panel-content" id="contentLeft">
+					<div class="panel-icon">
+						<i class="fas fa-wrench"></i>
+					</div>
+					<span class="panel-llc">Prime Auto Solutions LLC</span>
+					<h2 class="panel-title">
+						Mechanical
+						<br />
+						Repair
+					</h2>
+					<p class="panel-subtitle">Engine diagnostics, brakes, tune-ups, transmission & all mechanical work</p>
+					<span class="panel-cta">
+						Enter
+						<i class="fas fa-arrow-right"></i>
+					</span>
+				</div>
+			</a>
+
+			<!-- Right Panel - Collision -->
+			<a href="collision.html" class="panel panel-right" id="panelRight">
+				<div class="panel-bg"></div>
+				<div class="panel-content" id="contentRight">
+					<div class="panel-icon">
+						<i class="fas fa-car-crash"></i>
+					</div>
+					<span class="panel-llc">Prime Collision Center LLC</span>
+					<h2 class="panel-title">
+						Collision
+						<br />
+						& Body
+					</h2>
+					<p class="panel-subtitle">Insurance claims, body work, paint services & accident restoration</p>
+					<span class="panel-cta">
+						Enter
+						<i class="fas fa-arrow-right"></i>
+					</span>
+				</div>
+			</a>
+
+			<!-- Diagonal Slice -->
+			<div class="diagonal-slice" id="diagonalSlice"></div>
+
+			<!-- Corner Accents -->
+			<div class="corner-accent top-left" id="cornerTL"></div>
+			<div class="corner-accent bottom-right" id="cornerBR"></div>
+
+			<!-- Footer -->
+			<div class="hub-footer" id="hubFooter">
+				<div class="hub-phone">
+					<i class="fas fa-phone-alt"></i>
+					<a href="tel:+16184544075">(618) 454-4075</a>
+				</div>
+				<p class="hub-location">Robinson, IL · Crawford County</p>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+		<script>
+			// ========== Preloader ==========
+			$(window).on("load", function () {
+				$(".preloader")
+					.delay(300)
+					.fadeOut("slow", function () {
+						$(this).remove();
+					});
+			});
+
+			document.addEventListener("DOMContentLoaded", function () {
+				// Device detection - use hover capability instead of screen width
+				const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+				const isMobile = window.innerWidth <= 768;
+				const canHover = window.matchMedia("(hover: hover)").matches;
+
+				console.log("Device detection:", { prefersReducedMotion, isMobile, canHover });
+
+				// Elements
+				const panelLeft = document.getElementById("panelLeft");
+				const panelRight = document.getElementById("panelRight");
+				const slice = document.getElementById("diagonalSlice");
+				const splitContainer = document.getElementById("splitContainer");
+				const pageTransition = document.getElementById("pageTransition");
+
+				// State
+				let currentHover = null;
+				let isAnimatingLayout = false;
+
+				// Initialize slice position in pixels (after DOM is ready)
+				const initSlicePosition = () => {
+					const containerWidth = splitContainer.getBoundingClientRect().width;
+					if (!isMobile && containerWidth > 0) {
+						gsap.set(slice, { left: containerWidth / 2 + "px" });
+					}
+				};
+				initSlicePosition();
+
+				// ========== Page Transition - Fade to black on click ==========
+				document.querySelectorAll(".panel").forEach((panel) => {
+					panel.addEventListener("click", function (e) {
+						e.preventDefault();
+						const href = this.getAttribute("href");
+
+						// Mark that we came from hub
+						sessionStorage.setItem("fromHub", "true");
+
+						// Fade to black
+						pageTransition.classList.add("active");
+
+						// Navigate after dramatic fade completes (1.2s transition + 200ms buffer)
+						setTimeout(() => {
+							window.location.href = href;
+						}, 1400);
+					});
+				});
+
+				// ========== Intro Animation for Split Screen ==========
+				const tl = gsap.timeline({ delay: 0.5 }); // Wait for preloader to fade
+
+				if (prefersReducedMotion) {
+					// Skip animations for reduced motion
+					gsap.set(["#contentLeft", "#contentRight", "#centerBrand", "#hubFooter", "#cornerTL", "#cornerBR"], { opacity: 1, y: 0 });
+					gsap.set("#diagonalSlice", { scaleY: 1 });
+				} else {
+					// Animate split screen elements in
+					tl.set("#splitContainer", { autoAlpha: 1 })
+						// Diagonal slice draws in
+						.fromTo("#diagonalSlice", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "expo.inOut" })
+						// Center brand fades in
+						.to("#centerBrand", { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, "-=0.3")
+						// Panel content slides up
+						.to("#contentLeft", { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, "-=0.25")
+						.to("#contentRight", { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, "-=0.45")
+						// Footer fades in
+						.to("#hubFooter", { opacity: 1, duration: 0.4, ease: "expo.out" }, "-=0.3")
+						// Corner accents
+						.to(["#cornerTL", "#cornerBR"], { opacity: 1, duration: 0.35, ease: "expo.out" }, "-=0.25");
+				}
+
+				// ========== DESKTOP: GSAP Hover Animation ==========
+				if (canHover) {
+					console.log("DESKTOP - Setting up hover animations");
+
+					// Hover animation functions
+					function animateToLeft() {
+						console.log(">>> animateToLeft triggered");
+						if (currentHover === "left") return;
+						currentHover = "left";
+						isAnimatingLayout = true;
+						gsap.killTweensOf([panelLeft, panelRight, slice, "#centerBrand"]);
+
+						// Get actual DOM measurements
+						const containerWidth = splitContainer.getBoundingClientRect().width;
+						const targetLeftWidth = containerWidth * 0.65;
+
+						gsap.to(panelLeft, {
+							width: "65%",
+							duration: 0.7,
+							ease: "expo.out",
+							onComplete: () => {
+								isAnimatingLayout = false;
+							},
+						});
+						gsap.to(panelRight, { width: "35%", duration: 0.7, ease: "expo.out" });
+
+						// Blur the actual background element - slightly delayed, depth lags
+						gsap.to(panelRight.querySelector(".panel-bg"), {
+							filter: "blur(3px) brightness(0.7)",
+							duration: 0.65,
+							delay: 0.05,
+							ease: "expo.out",
+						});
+
+						// Fade center brand during hover
+						gsap.to("#centerBrand", {
+							opacity: 0.4,
+							duration: 0.3,
+							ease: "expo.out",
+						});
+
+						// Position slice at panel edge using pixels - reduced glow
+						gsap.to(slice, {
+							left: targetLeftWidth + "px",
+							boxShadow: "0 0 45px rgba(196, 16, 16, 0.7), 0 0 25px rgba(37, 99, 235, 0.35)",
+							duration: 0.7,
+							ease: "expo.out",
+						});
+					}
+
+					function animateToRight() {
+						console.log(">>> animateToRight triggered");
+						if (currentHover === "right") return;
+						currentHover = "right";
+						isAnimatingLayout = true;
+						gsap.killTweensOf([panelLeft, panelRight, slice, "#centerBrand"]);
+
+						// Get actual DOM measurements
+						const containerWidth = splitContainer.getBoundingClientRect().width;
+						const targetLeftWidth = containerWidth * 0.35;
+
+						gsap.to(panelRight, {
+							width: "65%",
+							duration: 0.7,
+							ease: "expo.out",
+							onComplete: () => {
+								isAnimatingLayout = false;
+							},
+						});
+						gsap.to(panelLeft, { width: "35%", duration: 0.7, ease: "expo.out" });
+
+						// Blur the actual background element - slightly delayed, depth lags
+						gsap.to(panelLeft.querySelector(".panel-bg"), {
+							filter: "blur(3px) brightness(0.7)",
+							duration: 0.65,
+							delay: 0.05,
+							ease: "expo.out",
+						});
+
+						// Fade center brand during hover
+						gsap.to("#centerBrand", {
+							opacity: 0.4,
+							duration: 0.3,
+							ease: "expo.out",
+						});
+
+						// Position slice at panel edge using pixels - reduced glow
+						gsap.to(slice, {
+							left: targetLeftWidth + "px",
+							boxShadow: "0 0 25px rgba(196, 16, 16, 0.35), 0 0 45px rgba(37, 99, 235, 0.7)",
+							duration: 0.7,
+							ease: "expo.out",
+						});
+					}
+
+					function animateToCenter() {
+						if (currentHover === null) return;
+						currentHover = null;
+						isAnimatingLayout = true;
+						gsap.killTweensOf([panelLeft, panelRight, slice, "#centerBrand"]);
+
+						const containerWidth = splitContainer.getBoundingClientRect().width;
+
+						gsap.to([panelLeft, panelRight], {
+							width: "50%",
+							duration: 0.5,
+							ease: "expo.out",
+							onComplete: () => {
+								isAnimatingLayout = false;
+							},
+						});
+
+						// Reset blur on both panel backgrounds - slightly delayed
+						gsap.to([panelLeft.querySelector(".panel-bg"), panelRight.querySelector(".panel-bg")], {
+							filter: "blur(0px) brightness(1)",
+							duration: 0.45,
+							delay: 0.05,
+							ease: "expo.out",
+						});
+
+						// Bring center brand back
+						gsap.to("#centerBrand", {
+							opacity: 1,
+							duration: 0.4,
+							ease: "expo.out",
+						});
+
+						gsap.to(slice, {
+							left: containerWidth / 2 + "px",
+							boxShadow: "0 0 30px rgba(196, 16, 16, 0.5), 0 0 30px rgba(37, 99, 235, 0.5)",
+							duration: 0.5,
+							ease: "expo.out",
+						});
+					}
+
+					// Attach hover event listeners
+					console.log("Attaching event listeners to panels");
+					panelLeft.addEventListener("mouseenter", animateToLeft);
+					panelRight.addEventListener("mouseenter", animateToRight);
+					splitContainer.addEventListener("mouseleave", animateToCenter);
+					console.log("Event listeners attached!");
+
+					// Parallax on panels - gated behind layout animation
+					document.querySelectorAll(".panel").forEach((panel) => {
+						panel.addEventListener("mousemove", (e) => {
+							// Don't parallax during layout transitions
+							if (isAnimatingLayout) return;
+
+							const rect = panel.getBoundingClientRect();
+							const x = (e.clientX - rect.left) / rect.width - 0.5;
+							const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+							gsap.to(panel.querySelector(".panel-content"), {
+								x: x * 15,
+								y: y * 15,
+								duration: 0.4,
+								ease: "expo.out",
+							});
+
+							gsap.to(panel.querySelector(".panel-cta"), {
+								x: x * 3,
+								y: y * 3,
+								duration: 0.2,
+								ease: "expo.out",
+							});
+						});
+
+						panel.addEventListener("mouseleave", () => {
+							gsap.to(panel.querySelector(".panel-content"), {
+								x: 0,
+								y: 0,
+								duration: 0.4,
+								ease: "expo.out",
+							});
+							gsap.to(panel.querySelector(".panel-cta"), {
+								x: 0,
+								y: 0,
+								duration: 0.3,
+								ease: "expo.out",
+							});
+						});
+					});
+				}
+
+				// ========== MOBILE: Tap feedback then navigate ==========
+				if (!canHover && !prefersReducedMotion) {
+					document.querySelectorAll(".panel").forEach((panel) => {
+						panel.addEventListener(
+							"touchstart",
+							function (e) {
+								this.classList.add("panel-tapped");
+
+								// Quick scale pulse
+								gsap.to(this.querySelector(".panel-content"), {
+									scale: 0.98,
+									duration: 0.1,
+									ease: "expo.out",
+								});
+							},
+							{ passive: true }
+						);
+
+						panel.addEventListener(
+							"touchend",
+							function (e) {
+								this.classList.remove("panel-tapped");
+
+								// Bounce back
+								gsap.to(this.querySelector(".panel-content"), {
+									scale: 1,
+									duration: 0.3,
+									ease: "elastic.out(1, 0.5)",
+								});
+							},
+							{ passive: true }
+						);
+					});
+				}
+
+				// ========== Handle resize - reinit if crossing breakpoint ==========
+				let wasDesktop = !isMobile;
+				window.addEventListener("resize", () => {
+					const isNowMobile = window.matchMedia("(max-width: 768px)").matches;
+					const containerWidth = splitContainer.getBoundingClientRect().width;
+
+					if (wasDesktop && isNowMobile) {
+						// Switched to mobile - reset to 50/50
+						gsap.set([panelLeft, panelRight], { width: "50%" });
+						gsap.set([panelLeft.querySelector(".panel-bg"), panelRight.querySelector(".panel-bg")], { filter: "none" });
+						gsap.set(slice, { left: "50%" });
+					} else if (!isNowMobile && currentHover === null) {
+						// On desktop at center, update slice position
+						gsap.set(slice, { left: containerWidth / 2 + "px" });
+					}
+					wasDesktop = !isNowMobile;
+				});
+			}); // End DOMContentLoaded
+		</script>
+	</body>
+</html>

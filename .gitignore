@@ -1,0 +1,119 @@
+# ===================================
+# Prime Auto - Git Ignore
+# ===================================
+
+# ========== DEVELOPMENT FILES ==========
+# Coverage reports
+Coverage-*.json
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========== UNUSED TEMPLATE FILES ==========
+# Original template page (reference only, not deployed)
+page2.html
+
+# Photoshop source file
+*.psd
+
+# Zip archives
+*.zip
+updated.zip
+assets/css/style.zip
+
+# ========== UNUSED CSS (commented out in HTML) ==========
+# RTL support (not used)
+assets/css/bootstrap.rtl.min.css
+assets/css/*rtl*
+
+# Flipster carousel (not used)
+assets/css/jquery.flipster.min.css
+assets/js/jquery.flipster.min.js
+
+# Magnific popup (not used - no lightbox)
+assets/css/magnific-popup.min.css
+assets/js/jquery.magnific-popup.min.js
+
+# Color schemes (using custom colors)
+assets/css/color.schemes.css
+
+# ========== UNUSED JS (not loaded in production pages) ==========
+# Countdown (not used)
+assets/js/countdown.js
+
+# Circle progress (not used)
+assets/js/circle-progress.js
+
+# Isotope grid (not used)
+assets/js/isotope.pkgd.min.js
+assets/js/imagesloaded.pkgd.min.js
+
+# jQuery UI (not used)
+assets/js/jquery-ui.min.js
+
+# Counter up (using odometer instead)
+assets/js/jquery.counterup.min.js
+
+# Nice select (not used)
+assets/js/nice-select.min.js
+
+# Tilt effect (not used)
+assets/js/tilt.min.js
+
+# Vivus SVG animation (not used)
+assets/js/vivus.min.js
+
+# Viewport jquery (not used)
+assets/js/viewport.jquery.js
+
+# Duplicate WOW (keeping min version only)
+assets/js/wow.js
+
+# ========== SASS SOURCE (compiled to style.css) ==========
+assets/sass/
+assets/css/style.css.map
+
+# ========== RTL SASS ==========
+assets/sass/_rtl.scss
+assets/sass/rtl/
+
+# ========== PHP ERROR LOGS ==========
+error_log
+*.log
+
+# ========== ENVIRONMENT & SECRETS ==========
+.env
+.env.local
+.env.*.local
+config.php
+
+# ========== COMPOSER (vendor managed separately) ==========
+# PHPMailer and all vendor dependencies - NOT in repo
+vendor/
+phpmailer/
+composer.lock
+
+# ========== NODE (if added later) ==========
+node_modules/
+package-lock.json
+yarn.lock
+
+# ========== CACHE ==========
+.cache/
+*.cache
+
+# ========== BACKUPS ==========
+*.bak
+*.backup
+*_backup*
+*_old*
