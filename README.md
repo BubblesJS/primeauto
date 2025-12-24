@@ -28,3 +28,10 @@ See `.env.example`.
 - `POST /api/contact`
   - Accepts standard HTML form POST (`application/x-www-form-urlencoded` or `multipart/form-data`).
   - Fields: `name`, `email`, `phone`, `service`, `vehicle`, `message`.
+
+## SMTP test (optional)
+
+- `GET /api/_test/smtp`
+   - Verifies SMTP connectivity (does **not** send an email).
+   - Works automatically when `NODE_ENV` is not `production`.
+   - In production, set `TEST_TOKEN` and call: `GET /api/_test/smtp?token=...` (or send header `x-test-token`).

@@ -45,8 +45,49 @@ function buildTransporter() {
 	});
 }
 
+function isTestEndpointAllowed(req) {
+	// By default: allow only in non-production.
+	// In production: require a shared secret token to prevent abuse.
+	if ((process.env.NODE_ENV || "").toLowerCase() !== "production") return true;
+
+	const token = String(req.query.token || req.get("x-test-token") || "").trim();
+	const expected = String(process.env.TEST_TOKEN || "").trim();
+	return Boolean(expected) && token === expected;
+}
+
 app.get("/healthz", (req, res) => {
 	res.status(200).json({ ok: true });
+});
+
+// SMTP verification endpoint (does not send email)
+app.get("/api/_test/smtp", async (req, res) => {
+	try {
+		if (!isTestEndpointAllowed(req)) {
+			return res.status(404).json({ ok: false, error: "Not found." });
+		}
+
+		const transporter = buildTransporter();
+		if (!transporter) {
+			return res.status(500).json({ ok: false, error: "Email is not configured on the server." });
+		}
+
+		await transporter.verify();
+		return res.status(200).json({ ok: true, verified: true });
+	} catch (err) {
+		console.error("/api/_test/smtp error", err);
+		const isProd = (process.env.NODE_ENV || "").toLowerCase() === "production";
+		const payload = { ok: false, verified: false, error: "SMTP verification failed." };
+		if (!isProd) {
+			payload.detail = {
+				code: err && err.code,
+				responseCode: err && err.responseCode,
+				response: err && err.response,
+				command: err && err.command,
+				message: err && err.message,
+			};
+		}
+		return res.status(500).json(payload);
+	}
 });
 
 app.post("/api/contact", async (req, res) => {
