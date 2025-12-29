@@ -96,6 +96,7 @@ error_log
 .env.local
 .env.*.local
 config.php
+VHOST_Settings.txt
 
 # ========== COMPOSER (vendor managed separately) ==========
 # PHPMailer and all vendor dependencies - NOT in repo
